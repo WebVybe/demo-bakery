@@ -15,7 +15,7 @@ export default function Contact() {
 
   return (
     <div className="page-transition mx-auto max-w-5xl px-6 py-16">
-      <p className="eyebrow mb-3">Contact</p>
+      <p className="eyebrow mb-3">Order</p>
       <h1 className="font-serif text-4xl text-ink">Order for pickup</h1>
       <p className="mt-4 max-w-xl text-oat">
         Tell us what you'd like and when you're coming by — we'll confirm by email or text within one business
