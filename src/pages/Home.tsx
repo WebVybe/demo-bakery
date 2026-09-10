@@ -39,9 +39,14 @@ export default function Home() {
               A small-batch neighborhood bakery and coffee bar — <span className="font-semibold text-crust">naturally leavened bread</span>,
               laminated pastry, and coffee from a local roaster, <span className="font-semibold text-crust">every single morning</span>.
             </p>
-            <div className="mt-6 flex items-center gap-3 rounded-2xl border border-black/5 bg-white px-4 py-3">
-              <span className="badge">This Week</span>
-              <span className="text-sm font-semibold text-ink">{bakery.featureItem.name}</span>
+            <div className="mt-6 flex flex-col gap-2 rounded-2xl border border-black/5 bg-white px-4 py-3 sm:flex-row sm:items-center sm:gap-3">
+              <div className="flex items-center gap-3">
+                <span className="badge">This Week</span>
+                <span className="text-sm font-semibold text-ink">{bakery.featureItem.name}</span>
+              </div>
+              <span className="text-xs text-oat sm:ml-auto sm:border-l sm:border-black/10 sm:pl-3">
+                {bakery.featureItem.cadence}
+              </span>
             </div>
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <NavLink to="/contact" className="btn-primary">
@@ -126,6 +131,35 @@ export default function Home() {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      {/* Custom orders & catering — separate paths, not one buried FAQ line */}
+      <section className="mx-auto max-w-6xl px-6 py-20">
+        <p className="eyebrow mb-3">Beyond the case</p>
+        <h2 className="mb-3 font-serif text-3xl text-ink">Custom cakes &amp; catering</h2>
+        <p className="mb-10 max-w-xl text-sm text-oat">{bakery.customOrderNotice}</p>
+        <div className="grid gap-6 sm:grid-cols-2">
+          <div className="rounded-2xl border border-black/5 bg-white p-6">
+            <h3 className="font-serif text-xl text-ink">Custom Cakes &amp; Desserts</h3>
+            <p className="mt-2 text-sm text-oat">
+              Birthdays, showers, small celebrations — tell us the occasion, serving size, and date. One week's
+              notice for a spot on the schedule.
+            </p>
+            <NavLink to="/contact" className="mt-4 inline-block text-sm font-semibold text-wheat-deep hover:underline">
+              Start a custom order →
+            </NavLink>
+          </div>
+          <div className="rounded-2xl border border-black/5 bg-white p-6">
+            <h3 className="font-serif text-xl text-ink">Catering for Events</h3>
+            <p className="mt-2 text-sm text-oat">
+              Pastry boxes, bread baskets, and coffee service for offices and small gatherings. Send headcount and
+              date to <a href={`mailto:${bakery.cateringEmail}`} className="font-medium text-crust hover:underline">{bakery.cateringEmail}</a> for a quote.
+            </p>
+            <NavLink to="/contact" className="mt-4 inline-block text-sm font-semibold text-wheat-deep hover:underline">
+              Or use the contact form →
+            </NavLink>
+          </div>
         </div>
       </section>
 

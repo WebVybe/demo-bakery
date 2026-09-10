@@ -22,6 +22,7 @@ export default function About() {
               {` ${bakery.founderName.split(' ')[0]}`} has lived in the neighborhood since before the ovens were
               installed.
             </p>
+            <p className="mt-6 font-serif text-lg text-crust">— {bakery.founderName}, founder</p>
           </div>
           <DecorPanel variant={4} className="h-72 w-full sm:h-96" label="Bakehouse glimpse — placeholder art, real photography pending" />
         </div>

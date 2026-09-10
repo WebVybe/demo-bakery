@@ -21,6 +21,13 @@ export default function Contact() {
         Tell us what you'd like and when you're coming by — we'll confirm by email or text within one business
         day and have it ready at the counter. For anything urgent, call the bakehouse directly.
       </p>
+      <p className="mt-3 max-w-xl rounded-xl border border-black/5 bg-linen px-4 py-3 text-sm text-oat">
+        {bakery.customOrderNotice} Catering inquiries can also go straight to{' '}
+        <a href={`mailto:${bakery.cateringEmail}`} className="font-medium text-crust hover:underline">
+          {bakery.cateringEmail}
+        </a>
+        .
+      </p>
 
       <div className="mt-10 grid gap-10 lg:grid-cols-[1.2fr_1fr]">
         <div className="rounded-2xl border border-black/5 bg-white p-6 sm:p-8">

@@ -12,13 +12,17 @@ export const bakery = {
   phone: '(619) 555-0198',
   phoneHref: 'tel:+16195550198',
   email: 'hello@wildflourbakehouse.com',
+  cateringEmail: 'catering@wildflourbakehouse.com',
   instagram: '@wildflourbakehouse',
   founderName: 'Priya Nair',
   founded: 2021,
   featureItem: {
     name: 'Brown Butter Maple Pecan Danish',
     blurb: "This week's feature — laminated dough, brown-butter frangipane, candied pecan.",
+    cadence: 'New feature every Monday, while it lasts.',
   },
+  customOrderNotice:
+    "We ask for at least one week's notice on custom cakes and catering — laminated dough and a properly fed starter take real time to get right, not something we can rush for a next-day order.",
 }
 
 export const hours = [
@@ -174,7 +178,7 @@ export const standingOrder = {
 export const faqs = [
   {
     q: 'Do you take custom cake or dessert orders?',
-    a: "Yes, for pickup — tell us the occasion, serving size, and date in the contact form and we'll follow up with options. We ask for at least one week's notice for custom orders.",
+    a: "Yes, for pickup — tell us the occasion, serving size, and date in the contact form and we'll follow up with options. We ask for at least one week's notice: laminated dough and a properly fed starter take real time, not something we can rush for a next-day order.",
   },
   {
     q: 'Do you sell out? Should I order ahead?',
@@ -190,7 +194,7 @@ export const faqs = [
   },
   {
     q: 'Do you cater events?',
-    a: 'Yes — pastry boxes, bread baskets, and coffee service for offices and small gatherings. Reach out with headcount and date and we’ll send a quote.',
+    a: 'Yes — pastry boxes, bread baskets, and coffee service for offices and small gatherings. Email catering@wildflourbakehouse.com or use the contact form with headcount and date and we’ll send a quote.',
   },
   {
     q: 'Is parking available?',

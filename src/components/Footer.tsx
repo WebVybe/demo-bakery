@@ -24,6 +24,12 @@ export default function Footer() {
                 {bakery.email}
               </a>
             </p>
+            <p className="mt-3 text-xs text-oat/80">
+              Catering &amp; custom orders:{' '}
+              <a href={`mailto:${bakery.cateringEmail}`} className="hover:text-ink">
+                {bakery.cateringEmail}
+              </a>
+            </p>
           </div>
 
           <div className="text-sm text-oat">

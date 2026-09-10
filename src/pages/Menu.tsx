@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import { menuCategories, standingOrder } from '../content/bakery'
+import { bakery, menuCategories, standingOrder } from '../content/bakery'
 
 export default function Menu() {
   return (
@@ -48,6 +48,17 @@ export default function Menu() {
         <NavLink to="/contact" className="btn-primary mt-6 inline-flex !bg-wheat !text-crust-deep hover:!bg-wheat-deep">
           Ask About the Standing Order
         </NavLink>
+      </div>
+
+      <div className="mt-10 rounded-2xl border border-black/5 bg-linen px-6 py-6 text-center">
+        <p className="font-medium text-ink">Custom cakes &amp; catering</p>
+        <p className="mx-auto mt-2 max-w-lg text-sm text-oat">{bakery.customOrderNotice}</p>
+        <p className="mt-2 text-sm text-oat">
+          Catering inquiries:{' '}
+          <a href={`mailto:${bakery.cateringEmail}`} className="font-medium text-crust hover:underline">
+            {bakery.cateringEmail}
+          </a>
+        </p>
       </div>
 
       <div className="mt-12 text-center">
