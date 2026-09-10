@@ -1,0 +1,151 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Nunito:wght@400;500;600;700;800&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "DM Serif Display", "Iowan Old Style", ui-serif, Georgia, serif;
+  --font-sans: "Nunito", ui-sans-serif, system-ui, sans-serif;
+
+  /* Wildflour Bakehouse brand palette -- warm bakery-case tones: toasted
+     crust brown, golden wheat, jammy berry accent. Deliberately distinct
+     from WebVybe's own blue/green brand AND from the clay/pine/sand palette
+     used on the Salt & Stone Wellness demo -- this is this client's own
+     identity. */
+  --color-crust: #3f2a1d;
+  --color-crust-deep: #2b1c13;
+  --color-wheat: #d99a3f;
+  --color-wheat-deep: #b97b23;
+  --color-linen: #f2e4cf;
+  --color-flour: #faf1e4;
+  --color-berry: #a63446;
+  --color-oat: #8a7660;
+  --color-ink: #2a2016;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background: var(--color-flour);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+::selection {
+  background: var(--color-linen);
+  color: var(--color-wheat-deep);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-wheat-deep);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+@layer components {
+  .btn,
+  .btn-primary,
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    padding: 0.8rem 1.65rem;
+    font-weight: 700;
+    font-size: 0.9375rem;
+    transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, border-color 180ms ease;
+  }
+  .btn:active,
+  .btn-primary:active,
+  .btn-secondary:active {
+    transform: translateY(0);
+  }
+  .btn-primary {
+    background: var(--color-crust);
+    color: #fff;
+    box-shadow: 0 8px 20px -8px color-mix(in srgb, var(--color-crust) 55%, transparent);
+  }
+  .btn-primary:hover {
+    background: color-mix(in srgb, var(--color-crust) 88%, black);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px -8px color-mix(in srgb, var(--color-crust) 60%, transparent);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--color-crust);
+    border: 1px solid color-mix(in srgb, var(--color-crust) 35%, transparent);
+  }
+  .btn-secondary:hover {
+    border-color: var(--color-crust);
+    background: color-mix(in srgb, var(--color-crust) 6%, transparent);
+    transform: translateY(-2px);
+  }
+  .nav-link {
+    position: relative;
+    padding-bottom: 0.25rem;
+  }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 1.5px;
+    width: 100%;
+    background: var(--color-wheat-deep);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 200ms ease;
+  }
+  .nav-link:hover::after,
+  .nav-link.is-active::after {
+    transform: scaleX(1);
+  }
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-wheat-deep);
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 9999px;
+    background: var(--color-berry);
+    color: #fff;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+  }
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.page-transition {
+  animation: page-in 320ms ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-transition {
+    animation: none;
+  }
+}

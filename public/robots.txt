@@ -1,0 +1,3 @@
+# Portfolio demo site -- not a real business. Kept out of search indexes.
+User-agent: *
+Disallow: /
