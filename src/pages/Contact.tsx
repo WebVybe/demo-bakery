@@ -155,11 +155,11 @@ export default function Contact() {
           : "Tell us about your event or occasion and we'll follow up with pricing and options."}
       </p>
 
-      <div className="mt-8 inline-flex rounded-full border border-black/10 bg-white p-1">
+      <div className="mt-8 flex max-w-full gap-1 rounded-full border border-black/10 bg-white p-1">
         <button
           type="button"
           onClick={() => setTab('menu')}
-          className={`rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
+          className={`min-w-0 flex-1 rounded-full px-3 py-2 text-center text-xs font-semibold transition-colors sm:flex-initial sm:px-4 sm:text-sm ${
             tab === 'menu' ? 'bg-crust text-flour' : 'text-oat hover:text-ink'
           }`}
         >
@@ -168,7 +168,7 @@ export default function Contact() {
         <button
           type="button"
           onClick={() => setTab('catering')}
-          className={`rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
+          className={`min-w-0 flex-1 rounded-full px-3 py-2 text-center text-xs font-semibold transition-colors sm:flex-initial sm:px-4 sm:text-sm ${
             tab === 'catering' ? 'bg-crust text-flour' : 'text-oat hover:text-ink'
           }`}
         >
@@ -176,8 +176,8 @@ export default function Contact() {
         </button>
       </div>
 
-      <div className="mt-8 grid gap-10 lg:grid-cols-[1.2fr_1fr]">
-        <div className="rounded-2xl border border-black/5 bg-white p-6 sm:p-8">
+      <div className="mt-8 grid min-w-0 gap-10 lg:grid-cols-[1.2fr_1fr]">
+        <div className="min-w-0 rounded-2xl border border-black/5 bg-white p-6 sm:p-8">
           {tab === 'menu' ? (
             orderSubmitted ? (
               <OrderSuccess
@@ -413,7 +413,7 @@ export default function Contact() {
           )}
         </div>
 
-        <div className="space-y-8">
+        <div className="min-w-0 space-y-8">
           <div>
             <p className="eyebrow mb-2">Call or Email</p>
             <p className="text-oat">
