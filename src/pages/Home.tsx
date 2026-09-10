@@ -36,8 +36,8 @@ export default function Home() {
               {bakery.tagline}
             </h1>
             <p className="mt-5 max-w-md text-base text-oat">
-              A small-batch neighborhood bakery and coffee bar — naturally leavened bread, laminated pastry, and
-              coffee from a local roaster, every single morning.
+              A small-batch neighborhood bakery and coffee bar — <span className="font-semibold text-crust">naturally leavened bread</span>,
+              laminated pastry, and coffee from a local roaster, <span className="font-semibold text-crust">every single morning</span>.
             </p>
             <div className="mt-6 flex items-center gap-3 rounded-2xl border border-black/5 bg-white px-4 py-3">
               <span className="badge">This Week</span>
@@ -60,12 +60,21 @@ export default function Home() {
       {/* Objection-handling strip */}
       <section className="border-y border-black/5 bg-linen">
         <div className="mx-auto grid max-w-6xl gap-8 px-6 py-12 sm:grid-cols-3">
-          {pillars.map((p) => (
-            <div key={p.title}>
-              <p className="font-serif text-lg text-crust">{p.title}</p>
-              <p className="mt-2 text-sm text-oat">{p.body}</p>
-            </div>
-          ))}
+          {pillars.map((p) =>
+            p.title === 'Order ahead, skip the line' ? (
+              <NavLink key={p.title} to="/contact" className="group">
+                <p className="font-serif text-xl font-semibold text-crust underline decoration-crust/30 decoration-2 underline-offset-4 transition-colors group-hover:text-berry group-hover:decoration-berry">
+                  {p.title} →
+                </p>
+                <p className="mt-2 text-sm text-oat">{p.body}</p>
+              </NavLink>
+            ) : (
+              <div key={p.title}>
+                <p className="font-serif text-lg text-crust">{p.title}</p>
+                <p className="mt-2 text-sm text-oat">{p.body}</p>
+              </div>
+            ),
+          )}
         </div>
       </section>
 
