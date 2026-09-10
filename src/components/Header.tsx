@@ -6,7 +6,6 @@ const links = [
   { to: '/menu', label: 'Menu & Pricing' },
   { to: '/gallery', label: 'Gallery' },
   { to: '/about', label: 'Our Story' },
-  { to: '/contact', label: 'Contact' },
 ]
 
 export default function Header() {
