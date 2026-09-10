@@ -2,114 +2,106 @@ import { NavLink } from 'react-router-dom'
 import DecorPanel from '../components/DecorPanel'
 import { bakery, faqs, menuCategories, standingOrder } from '../content/bakery'
 
-const highlights = menuCategories.slice(0, 3).map((c) => ({
+const highlights = menuCategories.slice(0, 3).map((c, i) => ({
   id: c.id,
   title: c.title,
   blurb: c.intro,
   from: c.items[0].price,
+  variant: ((i % 5) + 1) as 1 | 2 | 3 | 4 | 5,
 }))
-
-const pillars = [
-  {
-    title: "This week's feature",
-    body: `${bakery.featureItem.name} — ${bakery.featureItem.blurb.replace(/^This week's feature — /, '')}`,
-  },
-  {
-    title: 'Order ahead, skip the line',
-    body: 'Popular items sell out by mid-morning on weekends. Order for pickup through the contact form and we hold it for you.',
-  },
-  {
-    title: 'Baked before sunrise',
-    body: 'Everything on the case is laminated, shaped, or leavened the same morning — nothing frozen, nothing shipped in.',
-  },
-]
 
 export default function Home() {
   return (
     <div className="page-transition">
-      {/* Hero */}
-      <section className="mx-auto max-w-6xl px-6 pt-14 pb-16 sm:pt-20 sm:pb-24">
-        <div className="grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
-          <div>
-            <p className="eyebrow mb-4">{bakery.neighborhood}</p>
-            <h1 className="font-serif text-4xl leading-[1.1] text-ink sm:text-5xl lg:text-[3.4rem]">
+      {/* Hero — one dominant photo, one short headline, one primary CTA.
+          No competing headline/graphic-panel split, no second matched button. */}
+      <section className="relative">
+        <DecorPanel
+          variant={1}
+          rounded={false}
+          className="h-[68vh] min-h-[420px] w-full sm:h-[82vh]"
+          label="Bakehouse glimpse — placeholder art, real photography pending"
+        />
+        <div className="absolute inset-0 flex items-end bg-gradient-to-t from-crust-deep/80 via-crust-deep/15 to-transparent">
+          <div className="mx-auto w-full max-w-6xl px-6 pb-12 sm:pb-16">
+            <p className="eyebrow mb-3 text-linen">{bakery.neighborhood}</p>
+            <h1 className="max-w-2xl font-serif text-4xl leading-[1.1] text-flour sm:text-5xl lg:text-[3.4rem]">
               {bakery.tagline}
             </h1>
-            <p className="mt-5 max-w-md text-base text-oat">
-              A small-batch neighborhood bakery and coffee bar — <span className="font-semibold text-crust">naturally leavened bread</span>,
-              laminated pastry, and coffee from a local roaster, <span className="font-semibold text-crust">every single morning</span>.
-            </p>
-            <div className="mt-6 flex flex-col gap-2 rounded-2xl border border-black/5 bg-white px-4 py-3 sm:flex-row sm:items-center sm:gap-3">
-              <div className="flex items-center gap-3">
-                <span className="badge">This Week</span>
-                <span className="text-sm font-semibold text-ink">{bakery.featureItem.name}</span>
-              </div>
-              <span className="text-xs text-oat sm:ml-auto sm:border-l sm:border-black/10 sm:pl-3">
-                {bakery.featureItem.cadence}
-              </span>
-            </div>
-            <div className="mt-8 flex flex-wrap items-center gap-4">
+            <div className="mt-7 flex flex-wrap items-center gap-5">
               <NavLink to="/contact" className="btn-primary">
                 Order for Pickup
               </NavLink>
-              <NavLink to="/menu" className="btn-secondary">
-                See Menu & Pricing
+              <NavLink
+                to="/menu"
+                className="text-sm font-semibold text-flour underline decoration-flour/40 underline-offset-4 transition-colors hover:decoration-flour"
+              >
+                See Menu
               </NavLink>
             </div>
           </div>
-
-          <DecorPanel variant={1} className="h-72 w-full sm:h-96 lg:h-[26rem]" label="Bakehouse glimpse — placeholder art, real photography pending" />
         </div>
       </section>
 
-      {/* Objection-handling strip */}
-      <section className="border-y border-black/5 bg-linen">
-        <div className="mx-auto grid max-w-6xl gap-8 px-6 py-12 sm:grid-cols-3">
-          {pillars.map((p) =>
-            p.title === 'Order ahead, skip the line' ? (
-              <NavLink key={p.title} to="/contact" className="group">
-                <p className="font-serif text-xl font-semibold text-crust underline decoration-crust/30 decoration-2 underline-offset-4 transition-colors group-hover:text-berry group-hover:decoration-berry">
-                  {p.title} →
-                </p>
-                <p className="mt-2 text-sm text-oat">{p.body}</p>
-              </NavLink>
-            ) : (
-              <div key={p.title}>
-                <p className="font-serif text-lg text-crust">{p.title}</p>
-                <p className="mt-2 text-sm text-oat">{p.body}</p>
-              </div>
-            ),
-          )}
+      {/* This Week's Feature — its own prominent module, not a badge
+          buried inside the hero. */}
+      <section className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
+        <div className="grid gap-8 lg:grid-cols-[1.05fr_1fr] lg:items-center lg:gap-14">
+          <DecorPanel variant={4} className="h-72 w-full sm:h-96" label="This week's feature — placeholder art" />
+          <div>
+            <span className="badge">This Week's Feature</span>
+            <h2 className="mt-4 font-serif text-3xl text-ink sm:text-4xl">{bakery.featureItem.name}</h2>
+            <p className="mt-4 max-w-md text-base text-oat">
+              {bakery.featureItem.blurb.replace(/^This week's feature — /, '')}
+            </p>
+            <p className="mt-3 max-w-md text-sm text-oat">
+              {bakery.featureItem.cadence} Laminated, shaped, and baked before sunrise, same as everything else on
+              the case.
+            </p>
+            <NavLink to="/menu#pastries" className="mt-6 inline-block text-sm font-semibold text-wheat-deep hover:underline">
+              See it on the menu →
+            </NavLink>
+          </div>
         </div>
       </section>
 
-      {/* Menu highlights */}
-      <section className="mx-auto max-w-6xl px-6 py-20">
-        <div className="mb-10 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+      {/* Menu highlights — image-first tiles, no card border/background
+          chrome. The photo is the primary surface; the "order ahead"
+          message lives here as a short caption instead of an isolated
+          trust-bar section. */}
+      <section className="mx-auto max-w-6xl px-6 py-4 sm:py-8">
+        <div className="mb-10 flex flex-col gap-2 border-t border-black/5 pt-16 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="eyebrow mb-3">What we bake</p>
             <h2 className="font-serif text-3xl text-ink">Three cases, one oven</h2>
+            <p className="mt-3 max-w-md text-sm text-oat">
+              Weekend favorites sell out by mid-morning — order ahead through the contact form and we'll hold it
+              for you.
+            </p>
           </div>
           <NavLink to="/menu" className="text-sm font-semibold text-wheat-deep hover:underline">
             View full menu & pricing →
           </NavLink>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-3">
-          {highlights.map((h, i) => (
-            <div key={h.id} className="rounded-2xl border border-black/5 bg-white p-6">
-              <DecorPanel variant={((i % 5) + 1) as 1 | 2 | 3 | 4 | 5} className="mb-5 h-36 w-full" />
-              <h3 className="font-serif text-xl text-ink">{h.title}</h3>
-              <p className="mt-2 text-sm text-oat">{h.blurb}</p>
-              <p className="mt-4 text-sm font-semibold text-wheat-deep">From {h.from}</p>
-            </div>
+        <div className="grid gap-8 sm:grid-cols-3">
+          {highlights.map((h) => (
+            <NavLink key={h.id} to={`/menu#${h.id}`} className="group block">
+              <DecorPanel variant={h.variant} className="h-56 w-full transition-transform duration-300 group-hover:scale-[1.02] sm:h-64" />
+              <h3 className="mt-4 font-serif text-xl text-ink">{h.title}</h3>
+              <p className="mt-1 text-sm text-oat">{h.blurb}</p>
+              <p className="mt-2 text-sm font-semibold text-wheat-deep">From {h.from}</p>
+            </NavLink>
           ))}
         </div>
       </section>
 
-      {/* Standing Order */}
-      <section className="border-y border-black/5 bg-crust">
-        <div className="mx-auto grid max-w-6xl gap-10 px-6 py-16 lg:grid-cols-[1.1fr_1fr] lg:items-center">
+      {/* Standing Order — full-bleed image band, breaking the metronome
+          of identical max-w-6xl centered blocks. */}
+      <section className="relative isolate mt-20 overflow-hidden border-y border-black/5">
+        <DecorPanel variant={2} rounded={false} className="absolute inset-0 h-full w-full" />
+        <div className="absolute inset-0 bg-crust/82" />
+        <div className="relative mx-auto grid max-w-6xl gap-10 px-6 py-16 lg:grid-cols-[1.1fr_1fr] lg:items-center">
           <div>
             <p className="eyebrow mb-3 text-linen">Weekly bread subscription</p>
             <h2 className="font-serif text-3xl text-flour">
@@ -134,7 +126,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Custom orders & catering — separate paths, not one buried FAQ line */}
+      {/* Custom orders & catering — genuinely text-first content, so the
+          bordered-white-card idiom stays here. */}
       <section className="mx-auto max-w-6xl px-6 py-20">
         <p className="eyebrow mb-3">Beyond the case</p>
         <h2 className="mb-3 font-serif text-3xl text-ink">Custom cakes &amp; catering</h2>
@@ -163,7 +156,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FAQ preview */}
+      {/* FAQ preview — also text-first, keeps the bordered-card idiom. */}
       <section className="mx-auto max-w-6xl px-6 py-20">
         <p className="eyebrow mb-3">Good to know</p>
         <h2 className="mb-8 font-serif text-3xl text-ink">A few things first-timers ask</h2>
