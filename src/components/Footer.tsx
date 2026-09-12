@@ -77,8 +77,8 @@ export default function Footer() {
             Portfolio demo built by{' '}
             <a href="https://webvybe.app" className="underline hover:text-ink">
               WebVybe
-            </a>{' '}
-            — a fictional business created to showcase the bakery/cafe site template.
+            </a>
+            , a fictional business created to showcase the bakery/cafe site template.
           </p>
         </div>
       </div>

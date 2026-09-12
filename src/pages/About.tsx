@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import DecorPanel from '../components/DecorPanel'
 import { bakery, hours } from '../content/bakery'
+import bakerOven from '../assets/images/baker-oven.jpg' // Pexels: Yasin Onus, free commercial license
 
 export default function About() {
   return (
@@ -18,13 +19,17 @@ export default function About() {
             </p>
             <p className="mt-4 text-oat">
               The model is still simple: bake a short, well-made menu instead of a long, mediocre one, sell it
-              until it's gone, and start again before sunrise. South Park was never a business-plan decision —
+              until it's gone, and start again before sunrise. South Park was never a business-plan decision, and
               {` ${bakery.founderName.split(' ')[0]}`} has lived in the neighborhood since before the ovens were
               installed.
             </p>
-            <p className="mt-6 font-serif text-lg text-crust">— {bakery.founderName}, founder</p>
+            <p className="mt-6 font-serif text-lg text-crust">{bakery.founderName}, founder</p>
           </div>
-          <DecorPanel variant={4} className="h-72 w-full sm:h-96" label="Bakehouse glimpse — placeholder art, real photography pending" />
+          <DecorPanel
+            className="h-72 w-full sm:h-96"
+            src={bakerOven}
+            alt="Baker removing a fresh loaf of bread from a traditional oven"
+          />
         </div>
       </section>
 

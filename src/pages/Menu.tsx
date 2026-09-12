@@ -7,7 +7,7 @@ export default function Menu() {
       <p className="eyebrow mb-3">Menu & Pricing</p>
       <h1 className="font-serif text-4xl text-ink">What's in the case</h1>
       <p className="mt-4 max-w-xl text-oat">
-        The case changes slightly day to day depending on what came out of the oven. Prices below are typical —
+        The case changes slightly day to day depending on what came out of the oven. Prices below are typical, so
         ask in the contact form if you want to reserve something specific for pickup.
       </p>
 
@@ -38,7 +38,7 @@ export default function Menu() {
       <div className="mt-16 rounded-3xl bg-crust px-8 py-10 text-center">
         <p className="eyebrow mb-2 text-linen">Weekly bread subscription</p>
         <h2 className="font-serif text-2xl text-flour">
-          {standingOrder.name} — {standingOrder.price}, cancel anytime
+          {standingOrder.name}: {standingOrder.price}, cancel anytime
         </h2>
         <ul className="mx-auto mt-4 max-w-lg space-y-1 text-sm text-linen/90">
           {standingOrder.bullets.map((b) => (

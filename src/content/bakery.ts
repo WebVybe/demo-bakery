@@ -1,4 +1,4 @@
-// Wildflour Bakehouse -- a fictional neighborhood bakery & coffee bar created
+// Wildflour Bakehouse: a fictional neighborhood bakery & coffee bar created
 // for WebVybe's portfolio demo. There is no real business behind this
 // content; it exists to show how WebVybe would build a real bakery/cafe
 // client site. Keep prices and copy internally consistent if this file is
@@ -18,11 +18,11 @@ export const bakery = {
   founded: 2021,
   featureItem: {
     name: 'Brown Butter Maple Pecan Danish',
-    blurb: "This week's feature — laminated dough, brown-butter frangipane, candied pecan.",
+    blurb: "This week's feature: laminated dough, brown-butter frangipane, candied pecan.",
     cadence: 'New feature every Monday, while it lasts.',
   },
   customOrderNotice:
-    "We ask for at least one week's notice on custom cakes and catering — laminated dough and a properly fed starter take real time to get right, not something we can rush for a next-day order.",
+    "We ask for at least one week's notice on custom cakes and catering, because laminated dough and a properly fed starter take real time to get right, not something we can rush for a next-day order.",
 }
 
 export const hours = [
@@ -53,12 +53,12 @@ export const menuCategories: MenuCategory[] = [
   {
     id: 'pastries',
     title: 'Pastries & Viennoiserie',
-    intro: 'Laminated the same morning they sell — nothing frozen, nothing shipped in.',
+    intro: 'Laminated the same morning they sell: nothing frozen, nothing shipped in.',
     items: [
       {
         name: 'Butter Croissant',
         price: '$4.50',
-        description: 'Our base dough — 36-hour cold ferment, all-butter lamination.',
+        description: 'Our base dough: 36-hour cold ferment, all-butter lamination.',
         badge: 'Best Seller',
       },
       {
@@ -74,7 +74,7 @@ export const menuCategories: MenuCategory[] = [
       {
         name: 'Brown Butter Maple Pecan Danish',
         price: '$6.00',
-        description: 'This week’s feature — brown-butter frangipane and candied pecan.',
+        description: 'This week’s feature: brown-butter frangipane and candied pecan.',
         badge: "Baker's Pick",
       },
       {
@@ -92,7 +92,7 @@ export const menuCategories: MenuCategory[] = [
       {
         name: 'Country Sourdough',
         price: '$9.00',
-        description: 'Our house loaf — open crumb, dark blistered crust, 24-hour ferment.',
+        description: 'Our house loaf: open crumb, dark blistered crust, 24-hour ferment.',
         badge: 'Best Seller',
       },
       {
@@ -103,12 +103,12 @@ export const menuCategories: MenuCategory[] = [
       {
         name: 'Baguette',
         price: '$5.00',
-        description: 'Thin crust, open crumb — baked twice daily, mid-morning and early afternoon.',
+        description: 'Thin crust, open crumb, baked twice daily, mid-morning and early afternoon.',
       },
       {
         name: 'Rosemary Sea Salt Focaccia',
         price: '$8.00',
-        description: 'By the half sheet — olive oil, fresh rosemary, flaked sea salt.',
+        description: 'By the half sheet: olive oil, fresh rosemary, flaked sea salt.',
       },
     ],
   },
@@ -153,7 +153,7 @@ export const menuCategories: MenuCategory[] = [
       {
         name: 'Quiche of the Day',
         price: '$7.50',
-        description: 'Ask what’s in the case — rotates daily, always in a hand-laminated crust.',
+        description: 'Ask what’s in the case: it rotates daily, always in a hand-laminated crust.',
       },
       {
         name: 'Tomato & Ricotta Galette Slice',
@@ -169,7 +169,7 @@ export const standingOrder = {
   price: '$28/week',
   bullets: [
     'Two loaves of your choice, set aside for pickup every week',
-    'Skip any week from a text — no penalty, no phone call',
+    'Skip any week from a text, no penalty and no phone call',
     'Ready for pickup every Saturday morning, 7–9am',
     '10% off any pastries or drinks added to a pickup',
   ],
@@ -178,7 +178,7 @@ export const standingOrder = {
 export const faqs = [
   {
     q: 'Do you take custom cake or dessert orders?',
-    a: "Yes, for pickup — tell us the occasion, serving size, and date in the contact form and we'll follow up with options. We ask for at least one week's notice: laminated dough and a properly fed starter take real time, not something we can rush for a next-day order.",
+    a: "Yes, for pickup. Tell us the occasion, serving size, and date in the contact form and we'll follow up with options. We ask for at least one week's notice: laminated dough and a properly fed starter take real time, not something we can rush for a next-day order.",
   },
   {
     q: 'Do you sell out? Should I order ahead?',
@@ -190,11 +190,11 @@ export const faqs = [
   },
   {
     q: 'Is there seating, or is it pickup/takeaway only?',
-    a: 'A handful of counter and sidewalk seats, first come first served — most orders are quick pickups rather than sit-down service.',
+    a: 'A handful of counter and sidewalk seats, first come first served, and most orders are quick pickups rather than sit-down service.',
   },
   {
     q: 'Do you cater events?',
-    a: 'Yes — pastry boxes, bread baskets, and coffee service for offices and small gatherings. Email catering@wildflourbakehouse.com or use the contact form with headcount and date and we’ll send a quote.',
+    a: 'Yes: pastry boxes, bread baskets, and coffee service for offices and small gatherings. Email catering@wildflourbakehouse.com or use the contact form with headcount and date and we’ll send a quote.',
   },
   {
     q: 'Is parking available?',

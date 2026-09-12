@@ -1,6 +1,20 @@
 import { NavLink } from 'react-router-dom'
 import DecorPanel from '../components/DecorPanel'
 import { bakery, faqs, menuCategories, standingOrder } from '../content/bakery'
+// Photo credits (Pexels license: free for commercial use, no attribution
+// required -- credited here internally anyway):
+import heroBakeryInterior from '../assets/images/hero-bakery-interior.jpg' // Valeriya
+import featureCroissants from '../assets/images/feature-croissants.jpg' // Arda Kaykisiz
+import pastryCase from '../assets/images/pastry-case.jpg' // Valeriya
+import breadDisplay from '../assets/images/bread-display.jpg' // Manish Jain
+import coffeeCounter from '../assets/images/coffee-counter.jpg' // Loquellano
+import standingOrderBread from '../assets/images/standing-order-bread.jpg' // asumaani
+
+const highlightImages: Record<string, string> = {
+  pastries: pastryCase,
+  bread: breadDisplay,
+  coffee: coffeeCounter,
+}
 
 const highlights = menuCategories.slice(0, 3).map((c, i) => ({
   id: c.id,
@@ -8,6 +22,7 @@ const highlights = menuCategories.slice(0, 3).map((c, i) => ({
   blurb: c.intro,
   from: c.items[0].price,
   variant: ((i % 5) + 1) as 1 | 2 | 3 | 4 | 5,
+  image: highlightImages[c.id],
 }))
 
 export default function Home() {
@@ -17,10 +32,10 @@ export default function Home() {
           No competing headline/graphic-panel split, no second matched button. */}
       <section className="relative">
         <DecorPanel
-          variant={1}
           rounded={false}
           className="h-[68vh] min-h-[420px] w-full sm:h-[82vh]"
-          label="Bakehouse glimpse — placeholder art, real photography pending"
+          src={heroBakeryInterior}
+          alt="Warm, sunlit bakery interior with fresh bread and pastries on display"
         />
         <div className="absolute inset-0 flex items-end bg-gradient-to-t from-crust-deep/80 via-crust-deep/15 to-transparent">
           <div className="mx-auto w-full max-w-6xl px-6 pb-12 sm:pb-16">
@@ -47,12 +62,16 @@ export default function Home() {
           buried inside the hero. */}
       <section className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
         <div className="grid gap-8 lg:grid-cols-[1.05fr_1fr] lg:items-center lg:gap-14">
-          <DecorPanel variant={4} className="h-72 w-full sm:h-96" label="This week's feature — placeholder art" />
+          <DecorPanel
+            className="h-72 w-full sm:h-96"
+            src={featureCroissants}
+            alt="Freshly baked golden croissants cooling on a rack"
+          />
           <div>
             <span className="badge">This Week's Feature</span>
             <h2 className="mt-4 font-serif text-3xl text-ink sm:text-4xl">{bakery.featureItem.name}</h2>
             <p className="mt-4 max-w-md text-base text-oat">
-              {bakery.featureItem.blurb.replace(/^This week's feature — /, '')}
+              {bakery.featureItem.blurb.replace(/^This week's feature: /, '')}
             </p>
             <p className="mt-3 max-w-md text-sm text-oat">
               {bakery.featureItem.cadence} Laminated, shaped, and baked before sunrise, same as everything else on
@@ -75,7 +94,7 @@ export default function Home() {
             <p className="eyebrow mb-3">What we bake</p>
             <h2 className="font-serif text-3xl text-ink">Three cases, one oven</h2>
             <p className="mt-3 max-w-md text-sm text-oat">
-              Weekend favorites sell out by mid-morning — order ahead through the contact form and we'll hold it
+              Weekend favorites sell out by mid-morning, so order ahead through the contact form and we'll hold it
               for you.
             </p>
           </div>
@@ -87,7 +106,12 @@ export default function Home() {
         <div className="grid gap-8 sm:grid-cols-3">
           {highlights.map((h) => (
             <NavLink key={h.id} to={`/menu#${h.id}`} className="group block">
-              <DecorPanel variant={h.variant} className="h-56 w-full transition-transform duration-300 group-hover:scale-[1.02] sm:h-64" />
+              <DecorPanel
+                variant={h.variant}
+                className="h-56 w-full transition-transform duration-300 group-hover:scale-[1.02] sm:h-64"
+                src={h.image}
+                alt={h.title}
+              />
               <h3 className="mt-4 font-serif text-xl text-ink">{h.title}</h3>
               <p className="mt-1 text-sm text-oat">{h.blurb}</p>
               <p className="mt-2 text-sm font-semibold text-wheat-deep">From {h.from}</p>
@@ -99,13 +123,18 @@ export default function Home() {
       {/* Standing Order — full-bleed image band, breaking the metronome
           of identical max-w-6xl centered blocks. */}
       <section className="relative isolate mt-20 overflow-hidden border-y border-black/5">
-        <DecorPanel variant={2} rounded={false} className="absolute inset-0 h-full w-full" />
+        <DecorPanel
+          rounded={false}
+          className="absolute inset-0 h-full w-full"
+          src={standingOrderBread}
+          alt="Artisan sourdough loaves with a scored leaf pattern"
+        />
         <div className="absolute inset-0 bg-crust/82" />
         <div className="relative mx-auto grid max-w-6xl gap-10 px-6 py-16 lg:grid-cols-[1.1fr_1fr] lg:items-center">
           <div>
             <p className="eyebrow mb-3 text-linen">Weekly bread subscription</p>
             <h2 className="font-serif text-3xl text-flour">
-              {standingOrder.name} — {standingOrder.price}
+              {standingOrder.name}: {standingOrder.price}
             </h2>
             <p className="mt-4 max-w-md text-sm text-linen/90">
               Built for regulars who don't want to think about it. Two loaves, set aside every week, ready
@@ -136,7 +165,7 @@ export default function Home() {
           <div className="rounded-2xl border border-black/5 bg-white p-6">
             <h3 className="font-serif text-xl text-ink">Custom Cakes &amp; Desserts</h3>
             <p className="mt-2 text-sm text-oat">
-              Birthdays, showers, small celebrations — tell us the occasion, serving size, and date. One week's
+              Birthdays, showers, small celebrations: tell us the occasion, serving size, and date. One week's
               notice for a spot on the schedule.
             </p>
             <NavLink to="/contact" className="mt-4 inline-block text-sm font-semibold text-wheat-deep hover:underline">
@@ -175,7 +204,7 @@ export default function Home() {
         <div className="rounded-3xl bg-linen px-8 py-14 text-center">
           <h2 className="font-serif text-3xl text-ink">Hungry? We open at 7am.</h2>
           <p className="mx-auto mt-3 max-w-md text-sm text-oat">
-            Open Tuesday through Sunday. Order ahead for pickup or just walk in — either way, tell us what
+            Open Tuesday through Sunday. Order ahead for pickup or just walk in: either way, tell us what
             sounds good.
           </p>
           <NavLink to="/contact" className="btn-primary mt-7 inline-flex">

@@ -304,7 +304,7 @@ export default function Contact() {
                       </div>
                     ) : (
                       <p className="text-sm text-oat">
-                        No more pickup slots left {selectedDay.label.toLowerCase()} — pick another day above.
+                        No more pickup slots left {selectedDay.label.toLowerCase()}. Pick another day above.
                       </p>
                     )}
                   </div>
@@ -346,7 +346,7 @@ export default function Contact() {
               <span className="flex h-12 w-12 items-center justify-center rounded-full bg-crust text-flour">✓</span>
               <h2 className="font-serif text-2xl text-ink">Request received</h2>
               <p className="max-w-sm text-oat">
-                Thanks — we'll follow up by email or text within one business day with pricing and options.
+                Thanks. We'll follow up by email or text within one business day with pricing and options.
               </p>
               <p className="max-w-sm text-xs text-oat/70">
                 This is a portfolio demo: nothing was actually sent anywhere. A live client build would connect
@@ -401,7 +401,7 @@ export default function Contact() {
                 <textarea
                   name="details"
                   rows={4}
-                  placeholder="Cake flavor/size, dietary needs, event type, budget — whatever you know so far."
+                  placeholder="Cake flavor/size, dietary needs, event type, budget: whatever you know so far."
                   className={INPUT_CLS}
                 />
               </label>
